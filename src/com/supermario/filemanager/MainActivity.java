@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -608,8 +607,6 @@ public class MainActivity extends ListActivity implements OnItemLongClickListene
 		public long getItemId(int position) {
 			return position;
 		}
-	 
-		
 		//获得视图
 		public View getView(int position, View convertView, ViewGroup viewgroup) {
 			ViewHolder viewHolder = null;
@@ -627,7 +624,7 @@ public class MainActivity extends ListActivity implements OnItemLongClickListene
 				//获取视图标签
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
-			File mFile = new File(mFilePathList.get(position).toString());   
+			File mFile = new File(mFilePathList.get(position).toString());
 			//如果
 			if(mFileNameList.get(position).toString().equals("BacktoRoot")){
 				//添加返回根目录的按钮
@@ -896,43 +893,4 @@ public class MainActivity extends ListActivity implements OnItemLongClickListene
 			e.printStackTrace();
 		}
     }
-    public boolean onKeyDown(int keyCode, KeyEvent event)  
-    {  
-        if (keyCode == KeyEvent.KEYCODE_BACK )  
-        {  
-        	
-            // 创建退出对话框  
-            AlertDialog isExit = new AlertDialog.Builder(this).create();  
-            // 设置对话框标题  
-            isExit.setTitle("系统提示");  
-            // 设置对话框消息  
-            isExit.setMessage("确定要退出吗");  
-            // 添加选择按钮并注册监听  
-            isExit.setButton("确定", listener);  
-            isExit.setButton2("取消", listener);  
-            // 显示对话框  
-            isExit.show();  
-  
-        }  
-          
-        return false;  
-          
-    }  
-    /**监听对话框里面的button点击事件*/  
-    DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()  
-    {  
-        public void onClick(DialogInterface dialog, int which)  
-        {  
-            switch (which)  
-            {  
-            case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序  
-                finish();  
-                break;  
-            case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框  
-                break;  
-            default:  
-                break;  
-            }  
-        }  
-    };    
-}  
+}
